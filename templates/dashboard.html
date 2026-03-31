@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Monitoring LDR</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
+        .card { background: white; padding: 20px; border-radius: 10px; display: inline-block; margin-top: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .value { font-size: 48px; color: #2c3e50; font-weight: bold; }
+        .status { font-size: 18px; color: #7f8c8d; margin-top: 10px; }
+        .timer { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Monitoring Sensor LDR</h1>
+        <div class="value" id="ldr-val">0</div>
+        <div class="status" id="status-text">Memulai...</div>
+        <div class="status">Timer Gelap: <span id="timer-val" class="timer">0</span>/30</div>
+    </div>
+
+    <script>
+        function updateData() {
+            fetch('/get_data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ldr-val').innerText = data.ldr_value;
+                    document.getElementById('status-text').innerText = data.status;
+                    document.getElementById('timer-val').innerText = data.timer;
+                });
+        }
+        // Update setiap 500ms
+        setInterval(updateData, 500);
+    </script>
+</body>
+</html>
