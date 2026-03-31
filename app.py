@@ -5,11 +5,9 @@ import time
 
 app = Flask(__name__)
 
-# Konfigurasi Serial
-PORT = 'COM9'  # Sesuaikan dengan port kamu
+PORT = 'COM9'
 BAUD = 9600
 
-# Variabel Global untuk menyimpan data terakhir
 data_sensor = {
     "ldr_value": 0,
     "status": "Menghubungkan...",
@@ -20,7 +18,7 @@ def read_serial():
     global data_sensor
     try:
         ser = serial.Serial(PORT, BAUD, timeout=1)
-        time.sleep(2)  # Tunggu koneksi stabil
+        time.sleep(2)
         print(f"Koneksi Berhasil di {PORT}")
         
         while True:
@@ -32,7 +30,6 @@ def read_serial():
                         data_sensor["ldr_value"] = int(line)
                         data_sensor["status"] = "Terang" if int(line) >= 10 else "Gelap"
                     elif "Menghitung" in line:
-                        # Mengambil angka dari teks "Menghitung : X"
                         val = line.split(":")[-1].strip()
                         data_sensor["timer"] = val
                         data_sensor["status"] = "Menghitung Durasi Gelap..."
@@ -42,7 +39,7 @@ def read_serial():
         print(f"Error Serial: {e}")
         data_sensor["status"] = "Koneksi Terputus"
 
-# Menjalankan pembacaan serial di thread terpisah agar Flask tidak hang
+
 thread = threading.Thread(target=read_serial, daemon=True)
 thread.start()
 
@@ -56,7 +53,6 @@ def index():
 
 @app.route('/get_data')
 def get_data():
-    # Route ini digunakan untuk update data secara otomatis via AJAX
     return jsonify(data_sensor)
 
 if __name__ == '__main__':
