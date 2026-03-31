@@ -1,39 +1,39 @@
-# IoT Smart Lamp Monitoring
+# IoT Smart Lamp with LDR + Monitoring
 
-Sistem monitoring intensitas cahaya real-time menggunakan **Sensor LDR**, **Arduino**, dan **Flask**.
+A real-time light intensity monitoring system using an **LDR sensor**, **Arduino**, and **Flask**.
 
 ---
 
-## Informasi Penting
-Proyek ini dijalankan di **Localhost**. Tidak di-deploy ke Cloud (Vercel) karena membutuhkan akses langsung ke **Serial Port (USB)** untuk membaca data dari Arduino secara fisik.
+## Important Information
+This project runs on **Localhost**. It is not deployed to the cloud (Vercel) because it requires direct access to the **serial port (USB)** to physically read data from the Arduino.
 
 ---
 
 ## Tech Stack
 - **Backend:** Python (Flask), PySerial
 - **Frontend:** HTML, CSS, JavaScript (Fetch API)
-- **Hardware:** Arduino Uno, Sensor LDR, Resistor 10k Ohm
+- **Hardware:** Arduino Uno, Sensor LDR, 10k Ohm Resistor
 
 ---
 
-## Cara Menjalankan
-1. Hubungkan Arduino ke USB (Pastikan port sesuai, misal: `COM9`).
-2. Install library:
+## How to Run
+1. Connect the Arduino to the USB port (Make sure the port is correct, e.g., `COM9`).
+2. Install the libraries:
    ```bash
    pip install flask pyserial
-3. Jalankan server Flask
+3. Run the Flask server
    ```bash
    python app.py
-4. Buka di browser:
+4. Open in a browser:
    ```
    http://127.0.0.1:2009
 
-# Struktur Folder
+# Folder Structure
 
-<li>app.py : Script utama (Flask & Serial Reader).</li>
-<li>/templates : File HTML dashboard.</li>
-<li>/static : File CSS dan aset pendukung.</li>
-<li>Smart Lamp.ino : Kode .ino untuk di-upload ke Arduino.</li>
+<li>app.py: Main script (Flask & Serial Reader).</li>
+<li>/templates: Dashboard HTML files.</li>
+<li>/static: CSS files and supporting assets.</li>
+<li>Smart Lamp.ino: .ino code to upload to Arduino.</li>
 
 ---
 
