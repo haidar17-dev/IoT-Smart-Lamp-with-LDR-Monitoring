@@ -28,7 +28,7 @@ def read_serial():
                 if line:
                     if line.isdigit():
                         data_sensor["ldr_value"] = int(line)
-                        data_sensor["status"] = "Bright" if int(line) >= 10 else "Dark"
+                        data_sensor["status"] = "Bright" if int(line) >= 150 else "Dark"
                     elif "Menghitung" in line:
                         val = line.split(":")[-1].strip()
                         data_sensor["timer"] = val
