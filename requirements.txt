@@ -2,7 +2,5 @@ Flask
 serial
 render_template
 jsonify
-redirect
-url_for
 threading
 time

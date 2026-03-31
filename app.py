@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, redirect, url_for
+from flask import Flask, render_template, jsonify
 import serial
 import threading
 import time
@@ -44,10 +44,6 @@ thread = threading.Thread(target=read_serial, daemon=True)
 thread.start()
 
 @app.route('/')
-def ya():
-    return redirect(url_for('index'))
-
-@app.route('/dashboard')
 def index():
     return render_template('dashboard.html')
 
