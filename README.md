@@ -30,10 +30,10 @@ This project runs on **Localhost**. It is not deployed to the cloud (Vercel) bec
 
 # Folder Structure
 
-<li>app.py: Main script (Flask & Serial Reader).</li>
-<li>/templates: Dashboard HTML files.</li>
-<li>/static: CSS files and supporting assets.</li>
-<li>Smart Lamp.ino: .ino code to upload to Arduino.</li>
+- app.py: Main script (Flask & Serial Reader).
+- /templates: Dashboard HTML files.
+- /static: CSS files and supporting assets.
+- Smart Lamp.ino: .ino code to upload to Arduino.
 
 ---
 
